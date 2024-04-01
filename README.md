@@ -18,7 +18,7 @@ gem "UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG"
 
 Alternatively, install from git:
 ```ruby
-gem "yabeda-hanami", git: "https://github.com/gkostin1966/yabeda-hanami.git", branch: "main"
+gem "yabeda-hanami", git: "https://github.com/mlibrary/yabeda-hanami.git", branch: "main"
 ```
 And then execute:
 
@@ -29,19 +29,6 @@ bundle
 ## Usage
 
 ### Registering metrics on server process start
-
-Currently, yabeda-hanami automatically registers Hanami metrics when a server is started via `hanami server`, `puma -C config/puma.rb` or `unicorn -c`. However, other application servers or launching via `rackup` aren't supported at the moment.
-
-A possible workaround is to detect server process and manually activate yabeda-hanami in an initializer:
-
-```ruby
-# config/initializers/yabeda.rb
-
-if your_app_server_process? # Your logic here
-  Yabeda::Hanami.install!
-end
-```
-You always can add support for your app server to [lib/yabeda/hanami/railtie.rb](https://github.com/gkostin1966/yabeda-hanami/blob/master/lib/yabeda/hanami/railtie.rb). Pull Requests are always welcome!
 
 ## Metrics
 
@@ -131,12 +118,15 @@ git push --follow-tags
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/gkostin1966/yabeda-hanami. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/gkostin1966/yabeda-hanami/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/mlibrary/yabeda-hanami. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/mlibrary/yabeda-hanami/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [Apache 2.0 License](https://opensource.org/license/apache-2-0).
 
 ## Code of Conduct
 
-Everyone interacting in the Yabeda::Hanami project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/gkostin1966/yabeda-hanami/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Yabeda::Hanami project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mlibrary/yabeda-hanami/blob/main/CODE_OF_CONDUCT.md).
+
+## Copyright Notice
+Copyright 2024, Regents of the University of Michigan.

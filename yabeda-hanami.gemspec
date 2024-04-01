@@ -10,15 +10,15 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Extensible metrics for monitoring a Hanami application"
   spec.description = "Easy collecting your Hanami apps metrics"
-  spec.homepage = "https://github.com/gkostin1966/yabeda-hanami"
-  spec.license = "MIT"
+  spec.homepage = "https://github.com/mlibrary/yabeda-hanami"
+  spec.license = "Apache-2.0"
   spec.required_ruby_version = ">= 2.6.0"
 
   # spec.metadata["allowed_push_host"] = "https://example.com"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/gkostin1966/yabeda-hanami"
-  spec.metadata["changelog_uri"] = "https://github.com/gkostin1966/yabeda-hanami/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/mlibrary/yabeda-hanami"
+  spec.metadata["changelog_uri"] = "https://github.com/mlibrary/yabeda-hanami/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
