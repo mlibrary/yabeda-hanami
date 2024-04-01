@@ -1,0 +1,9 @@
+---
+services:
+  dcde:
+    image: dcde
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - .:/dcde

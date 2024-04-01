@@ -1,0 +1,8 @@
+module RuboCop
+  module Cop
+    module Style
+      class MyFrozenStringLiteralComment < FrozenStringLiteralComment
+      end
+    end
+  end
+end

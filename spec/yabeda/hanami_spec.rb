@@ -1,0 +1,57 @@
+# frozen_string_literal: true
+
+require "hanami/controller"
+
+RSpec.describe Yabeda::Hanami, type: :integration do
+  include Hanami::Integration::Runner
+  include Hanami::IntegrationTest::Behavior
+
+  def app
+    TestApplication
+  end
+
+  it "has a version number" do
+    expect(described_class::VERSION).not_to be nil
+  end
+
+  it "has a config" do
+    expect(described_class.config).not_to be nil
+  end
+
+  it "increments counters for every request" do
+    expect { get "/hello/world" }.to \
+      increment_yabeda_counter(Yabeda.hanami.requests_total)
+        .with_tags(controller: "hello", action: "world", status: 200, method: "get", format: :html)
+        .by(1)
+  end
+
+  # it "measure action runtime for every request" do
+  #   expect { get "/hello/long" }.to \
+  #     measure_yabeda_histogram(Yabeda.hanami.request_duration)
+  #       .with_tags(controller: "hello", action: "long", status: 200, method: "get", format: :html)
+  #       .with(be_between(0.005, 0.05))
+  # end
+  #
+  # it "returns internal_server_error status code" do
+  #   expect { get "/hello/internal_server_error" }.to \
+  #     increment_yabeda_counter(Yabeda.hanami.requests_total)
+  #       .with_tags(controller: "hello", action: "internal_server_error", status: 500, method: "get", format: :html)
+  # end
+  #
+  # context "with changed controller name case config tp camel case" do
+  #   around do |example|
+  #     original_case = described_class.config.controller_name_case
+  #     described_class.config.controller_name_case = :camel
+  #     example.call
+  #   ensure
+  #     described_class.config.controller_name_case = original_case
+  #   end
+  #
+  #   it "reports controller tag in camel case" do
+  #     expect { get "/hello/world" }.to \
+  #       increment_yabeda_counter(Yabeda.hanami.requests_total)
+  #         .with_tags(controller: "HelloController", action: "world", status: 200, method: "get", format: :html)
+  #         .by(1)
+  #   end
+  # end
+end

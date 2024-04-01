@@ -1,0 +1,19 @@
+require:
+  - ./lib/rubocop/cop/style/my_frozen_string_literal_comment.rb
+
+Style/MyFrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+  SupportedStyles:
+    # `always` will always add the frozen string literal comment to a file
+    # regardless of the Ruby version or if `freeze` or `<<` are called on a
+    # string literal. It is possible that this will create errors.
+    - always
+    # `always_true` will add the frozen string literal comment to a file,
+    # similarly to the `always` style, but will also change any disabled
+    # comments (e.g. `# frozen_string_literal: false`) to be enabled.
+    - always_true
+    # `never` will enforce that the frozen string literal comment does not
+    # exist in a file.
+    - never
+  SafeAutoCorrect: false

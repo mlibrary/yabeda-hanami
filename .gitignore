@@ -1,0 +1,25 @@
+/.bundle/
+/.cache/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# node package manager
+.npm
+**/node_modules/
+
+# rspec failure tracking
+.rspec_status
+**/spec/examples.txt
+
+# log files
+**/log/
+
+# dotenv
+.env
+.env/*.local
+
