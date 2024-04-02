@@ -14,7 +14,6 @@
 
 # rspec failure tracking
 .rspec_status
-**/spec/examples.txt
 
 # log files
 **/log/
@@ -23,3 +22,4 @@
 .env
 .env/*.local
 
+.local/

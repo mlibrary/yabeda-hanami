@@ -27,7 +27,7 @@ module Support
   module Hello
     class World < Hanami::Action
       def handle(request, response)
-        response.render json: { hello: :world }
+        response.render json: {hello: :world}
       end
     end
 
@@ -41,20 +41,20 @@ module Support
     # end
   end
 
-# class HelloController < ActionController::API
-#   def world
-#     render json: { hello: :world }
-#   end
-#
-#   def long
-#     sleep(0.01)
-#     render json: { good: :morning }
-#   end
-#
-#   def internal_server_error
-#     raise StandardError
-#   end
-# end
+  # class HelloController < ActionController::API
+  #   def world
+  #     render json: { hello: :world }
+  #   end
+  #
+  #   def long
+  #     sleep(0.01)
+  #     render json: { good: :morning }
+  #   end
+  #
+  #   def internal_server_error
+  #     raise StandardError
+  #   end
+  # end
 
-# TestApplication.initialize!
+  # TestApplication.initialize!
 end

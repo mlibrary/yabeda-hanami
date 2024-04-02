@@ -1,0 +1,17 @@
+# For available configuration options, see:
+#   https://github.com/testdouble/standard
+
+# Configuring ruby_version
+#
+# One notable YAML setting is ruby_version, which allows you to set the oldest version of Ruby
+#  the project needs to support RuboCop's TargetRubyVersion setting explicitly. Because
+# this value is inferred from any .ruby-version, .tool-versions, Gemfile.lock, and
+# *.gemspec files that might be present, most applications won't need to set this.
+#
+# However, gems and libraries that support older versions of Ruby will want to lock the ruby-version:
+# explicitly in their .standard.yml file to ensure new rules don't break old rubies:
+
+ruby_version: 2.6
+
+extend_config:
+  - .my_frozen_string_literal_comment.yml

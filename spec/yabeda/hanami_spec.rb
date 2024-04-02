@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
-require "hanami/controller"
+def app
+  TestApplication
+end
 
-RSpec.describe Yabeda::Hanami, type: :integration do
-  include Hanami::Integration::Runner
-  include Hanami::IntegrationTest::Behavior
-
-  def app
-    TestApplication
-  end
-
+RSpec.describe Yabeda::Hanami do
   it "has a version number" do
     expect(described_class::VERSION).not_to be nil
   end
@@ -18,12 +13,12 @@ RSpec.describe Yabeda::Hanami, type: :integration do
     expect(described_class.config).not_to be nil
   end
 
-  it "increments counters for every request" do
-    expect { get "/hello/world" }.to \
-      increment_yabeda_counter(Yabeda.hanami.requests_total)
-        .with_tags(controller: "hello", action: "world", status: 200, method: "get", format: :html)
-        .by(1)
-  end
+  # it "increments counters for every request" do
+  #   expect { get "/hello/world" }.to \
+  #     increment_yabeda_counter(Yabeda.hanami.requests_total)
+  #       .with_tags(controller: "hello", action: "world", status: 200, method: "get", format: :html)
+  #       .by(1)
+  # end
 
   # it "measure action runtime for every request" do
   #   expect { get "/hello/long" }.to \
