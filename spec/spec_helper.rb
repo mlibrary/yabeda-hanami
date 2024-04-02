@@ -22,8 +22,4 @@ RSpec.configure do |config|
 
   Kernel.srand config.seed
   config.order = :random
-
-  config.before(:suite) do
-    Yabeda::Hanami.install!
-  end
 end

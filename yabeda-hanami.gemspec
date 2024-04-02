@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-HANAMI_VERSION = "2.0"
-
 require_relative "lib/yabeda/hanami/version"
 
 Gem::Specification.new do |spec|
@@ -36,6 +34,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "hanami", "~> 2.0"
   spec.add_dependency "yabeda", "~> 0.12"
 
   spec.add_development_dependency "bundler", "~> 2.0"
@@ -43,10 +42,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "standard", "~> 1.3"
   spec.add_development_dependency "debug", "~> 1.9"
-
-  spec.add_development_dependency "hanami", "~> #{HANAMI_VERSION}"
-  spec.add_development_dependency "hanami-router", "~> #{HANAMI_VERSION}"
-  spec.add_development_dependency "hanami-controller", "~> #{HANAMI_VERSION}"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

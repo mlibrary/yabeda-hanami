@@ -71,8 +71,8 @@ module Yabeda
       end
 
       def method
-        puts payload
-        puts "REQUEST_METHOD: #{payload[:env]["REQUEST_METHOD"]}"
+        # puts payload
+        # puts "REQUEST_METHOD: #{payload[:env]["REQUEST_METHOD"]}"
         payload[:env]["REQUEST_METHOD"].to_s.downcase
       end
 

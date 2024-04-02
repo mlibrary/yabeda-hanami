@@ -13,40 +13,23 @@ RSpec.describe Yabeda::Hanami do
     expect(described_class.config).not_to be nil
   end
 
-  # it "increments counters for every request" do
-  #   expect { get "/hello/world" }.to \
-  #     increment_yabeda_counter(Yabeda.hanami.requests_total)
-  #       .with_tags(controller: "hello", action: "world", status: 200, method: "get", format: :html)
-  #       .by(1)
-  # end
+  describe "#install!" do
+    it "installs correctly" do
+      expect { described_class.install! }.not_to raise_error
+    end
+  end
 
-  # it "measure action runtime for every request" do
-  #   expect { get "/hello/long" }.to \
-  #     measure_yabeda_histogram(Yabeda.hanami.request_duration)
-  #       .with_tags(controller: "hello", action: "long", status: 200, method: "get", format: :html)
-  #       .with(be_between(0.005, 0.05))
-  # end
-  #
-  # it "returns internal_server_error status code" do
-  #   expect { get "/hello/internal_server_error" }.to \
-  #     increment_yabeda_counter(Yabeda.hanami.requests_total)
-  #       .with_tags(controller: "hello", action: "internal_server_error", status: 500, method: "get", format: :html)
-  # end
-  #
-  # context "with changed controller name case config tp camel case" do
-  #   around do |example|
-  #     original_case = described_class.config.controller_name_case
-  #     described_class.config.controller_name_case = :camel
-  #     example.call
-  #   ensure
-  #     described_class.config.controller_name_case = original_case
-  #   end
-  #
-  #   it "reports controller tag in camel case" do
-  #     expect { get "/hello/world" }.to \
-  #       increment_yabeda_counter(Yabeda.hanami.requests_total)
-  #         .with_tags(controller: "HelloController", action: "world", status: 200, method: "get", format: :html)
-  #         .by(1)
-  #   end
-  # end
+  describe "#initialize!" do
+    let(:notifications) { double("notifications") }
+
+    before do
+      described_class.install!
+      allow(Yabeda::Hanami.config).to receive(:notifications).and_return(notifications)
+      allow(notifications).to receive(:subscribe).with(:"rack.request.stop")
+    end
+
+    it "initializes correctly" do
+      expect { described_class.initialize! }.not_to raise_error
+    end
+  end
 end

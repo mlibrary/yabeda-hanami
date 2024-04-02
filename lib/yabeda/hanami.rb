@@ -17,14 +17,6 @@ module Yabeda
     ].freeze
 
     class << self
-      # def controller_handlers
-      #   @controller_handlers ||= []
-      # end
-
-      # def on_controller_action(&block)
-      #   controller_handlers << block
-      # end
-
       # Declare metrics and install event handlers for collecting themya
       def install!
         Yabeda.configure do
@@ -54,24 +46,14 @@ module Yabeda
             end
           end
         end
-
-        puts "Slice name: #{::Hanami.app.slice_name}"
-        puts "Keys: #{::Hanami.app.keys}"
-        puts "Prepared: #{::Hanami.app.prepared?}"
-        puts "Booted: #{::Hanami.app.booted?}"
       end
 
       def initialize!
-        puts "Slice name: #{::Hanami.app.slice_name}"
-        puts "Keys: #{::Hanami.app.keys}"
-        puts "Prepared: #{::Hanami.app.prepared?}"
-        puts "Booted: #{::Hanami.app.booted?}"
-
         yabeda_hanami_config = ::Yabeda::Hanami.config
 
         yabeda_hanami_config.notifications.subscribe(:"rack.request.stop") do |event|
-          puts event
-          puts event.inspect
+          # puts event
+          # puts event.inspect
           event = Yabeda::Hanami::Event.new(event.id, event.payload)
 
           Yabeda.hanami_requests_total.increment(event.labels)

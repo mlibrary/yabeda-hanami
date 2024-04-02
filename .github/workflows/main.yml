@@ -25,5 +25,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Run the default task
+    - name: Run the unit test
       run: bundle exec rake
+    - name: Run the integration test
+      run: cd hanami_app && bundle install && bundle exec rake

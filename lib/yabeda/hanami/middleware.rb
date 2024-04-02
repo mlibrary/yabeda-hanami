@@ -10,7 +10,7 @@ module Yabeda
       end
 
       def call(env)
-        puts "Received the incoming request"
+        # puts "Received the incoming request"
 
         status, headers, body = nil
         # forward the request to the next middleware or app
@@ -19,7 +19,7 @@ module Yabeda
           sleep(1)
         end
 
-        puts "Received the outgoing response"
+        # puts "Received the outgoing response"
 
         [status, headers, body]
       end
