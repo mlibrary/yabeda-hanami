@@ -18,10 +18,10 @@ Hanami.app.register_provider :monitor, namespace: true do
 
     config = Yabeda::Hanami.config
 
-    config.inflector = target["inflector"]
-    config.routes = target["routes"]
+    # config.inflector = target["inflector"]
+    # config.routes = target["routes"]
     config.notifications = target["notifications"]
-    config.monitor = target["rack.monitor"]
+    # config.monitor = target["rack.monitor"]
   end
 
   start do
@@ -34,10 +34,8 @@ Hanami.app.register_provider :monitor, namespace: true do
     #
     # register "rom", ROM.container(config)
 
-    config = Yabeda::Hanami.config
+    _config = Yabeda::Hanami.config
 
-    config.notifications.register_event("greg.kostin")
-
-    Yabeda::Hanami.initialize!
+    Yabeda::Hanami.subscribe!
   end
 end

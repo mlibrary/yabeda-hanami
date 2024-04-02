@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/mlibrary/yabeda-hanami
-  revision: d857c171cb1aee2de70d7f0228dad988ab613156
+  revision: 21259a0ded57f92dc01c435d45ea341933b69706
   branch: main
   specs:
     yabeda-hanami (0.1.0)
-      hanami (~> 2.0)
+      hanami (~> 2.1)
       yabeda (~> 0.12)
 
 GEM

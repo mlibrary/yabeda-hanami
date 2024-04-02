@@ -19,17 +19,22 @@ RSpec.describe Yabeda::Hanami do
     end
   end
 
-  describe "#initialize!" do
+  describe "#subscribe!" do
     let(:notifications) { double("notifications") }
 
     before do
       described_class.install!
       allow(Yabeda::Hanami.config).to receive(:notifications).and_return(notifications)
+      allow(notifications).to receive(:subscribe).with(:"rack.request.start")
       allow(notifications).to receive(:subscribe).with(:"rack.request.stop")
+      allow(notifications).to receive(:subscribe).with(:"rack.request.error")
     end
 
     it "initializes correctly" do
-      expect { described_class.initialize! }.not_to raise_error
+      expect { described_class.subscribe! }.not_to raise_error
+      expect(notifications).to have_received(:subscribe).with(:"rack.request.start").once
+      expect(notifications).to have_received(:subscribe).with(:"rack.request.stop").once
+      expect(notifications).to have_received(:subscribe).with(:"rack.request.error").once
     end
   end
 end

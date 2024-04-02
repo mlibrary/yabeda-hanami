@@ -8,13 +8,7 @@ module Yabeda
     class Config < ::Anyway::Config
       config_name :yabeda_hanami
 
-      attr_config :inflector
-      attr_config :monitor
-      attr_config :notifications
-      attr_config :routes
-
-      attr_config :apdex_target
-      attr_config controller_name_case: :snake
+      attr_accessor :notifications
     end
   end
 end

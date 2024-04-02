@@ -6,5 +6,6 @@ module HanamiApp
     root to: "hello.world"
 
     get "/hello/world", to: "hello.world"
+    get "/hello/error", to: "hello.error"
   end
 end

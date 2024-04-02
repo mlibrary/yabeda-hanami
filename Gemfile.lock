@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     yabeda-hanami (0.1.0)
-      hanami (~> 2.0)
+      hanami (~> 2.1)
       yabeda (~> 0.12)
 
 GEM
