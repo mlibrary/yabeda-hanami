@@ -1,12 +1,21 @@
 # Yabeda::Hanami
 
-Built-in metrics for out-of-the box [Hanami](https://hanamirb.org/) applications monitoring.
+Built-in metrics for out of the box [Hanami](https://hanamirb.org/) applications monitoring.
+
+## Metrics
+
+### Rack
+| type      | name                         | subscription[^1]      | comment                           |
+|-----------|------------------------------|-----------------------|-----------------------------------|
+| counter   | :hanami_requests_total       | :"rack.request.start" | Total web requests received       |
+| histogram | :hanami_requests_duration    | :"rack.request.stop"  | Web request duration (in seconds) |
+| counter   | :hanami_request_errors_total | :"rack.request.error" | Total web request errors[^2]      |
+[^1]: `id` of [Dry::Monitor::Notifications](https://www.rubydoc.info/gems/dry-monitor/Dry/Monitor/Notifications) declared in [Dry::Monitor::Rack::Middleware](https://www.rubydoc.info/gems/dry-monitor/Dry/Monitor/Rack/Middleware)
+[^2]: I don't think this event is ever used! [dry-monitor (1.0.1)](https://www.rubydoc.info/gems/dry-monitor)
 
 ## Installation
 
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. 
-
-
 
 Add this line to your application's Gemfile:
 
@@ -25,49 +34,9 @@ And then execute:
 ```shell
 bundle
 ```
-
 ## Usage
 
-### Registering metrics on server process start
-
-## Metrics
-
-* Total web requests received: `hanami_requests_total`
-* Web request duration: `hanami_request_duration` (in seconds)
-* Views rendering duration: `hanami_view_runtime` (in seconds)
-* DB request duration: `hanami_db_runtime` (in seconds)
-
-## Hooks
-
-* `on_controller_action`: Allows to collect
-
-```ruby
-Yabeda::Hanami.on_controller_action do |event, labels|
-  next unless event.payload[:ext_service_runtime]
-  time_in_seconds = event.payload[:ext_service_runtime] / 1000.0
-  hanami_ext_service_runtime.measure(labels, time_in_seconds)
-end
-```
-
-## Custom tags
-
-You can add additional tags to the existing metrics by adding custom payload to your controller.
-
-```ruby
-# This block is optional but some adapters (like Prometheus) requires that all tags should be declared in advance
-Yabeda.configure do
-  default_tag :importance, nil
-end
-
-class ApplicationController < ActionController::Base
-  def append_info_to_payload(payload)
-    super
-    payload[:importance] = extract_importance(params)
-  end
-end
-```
-
-`append_info_to_payload` is a method from [ActionController::Instrumentation](https://api.rubyonrails.org/classes/ActionController/Instrumentation.html#method-i-append_info_to_payload)
+Registering metrics on server process start
 
 ## Development
 
@@ -75,14 +44,15 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-### Docker Compose Development Environment (dcde)
+## Docker Compose Development Environment (dcde)
 
-After checking out the repo, run `docker-compose build`to build the 'dcde' image. Once the image is built, run `docker-compose up -d` which will create the 'dcde' container. Now run `docker-compose exec -- dcde bash` to get a bash shell inside the container.
+After checking out the repo, run `docker-compose build` to build the **dcde** image. Once the image is built, run `docker-compose up -d` which will create the **dcde** container. Now run `docker-compose exec -- dcde bash` to get a bash shell inside the container.
 
 From here on it is the same as above a.k.a. run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. etc...
 
-NOTE: If you are using `docker-compose` on a non-linux machine you will need to run `bundle lock --add-platform x86_64-linux` otherwise the action workflow 'Ruby' (a.k.a. continuous integration) will fail when pushing your branch to GitHub.  
-### Releasing
+**NOTE:** If you are using `docker-compose` on a non-linux machine you will need to run `bundle lock --add-platform x86_64-linux` otherwise the action workflows will fail when pushing your branch to GitHub.  
+
+## Releasing
 
 1. Bump version number in `lib/yabeda/rails/version.rb` 
 
@@ -98,7 +68,6 @@ git add lib/yabeda/hanami/version.rb CHANGELOG.md
 version=$(ruby -r ./lib/yabeda/hanami/version.rb -e "puts Gem::Version.new(Yabeda::Hanami::VERSION)")
 git commit --message="${version}: " --edit
 ```
-
 
 4. Create annotated tag:
 ```shell
@@ -120,13 +89,13 @@ git push --follow-tags
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/mlibrary/yabeda-hanami. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/mlibrary/yabeda-hanami/blob/main/CODE_OF_CONDUCT.md).
 
-## License
-
-The gem is available as open source under the terms of the [Apache 2.0 License](https://opensource.org/license/apache-2-0).
-
 ## Code of Conduct
 
 Everyone interacting in the Yabeda::Hanami project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mlibrary/yabeda-hanami/blob/main/CODE_OF_CONDUCT.md).
+
+## License
+
+The gem is available as open source under the terms of the [Apache 2.0 License](https://opensource.org/license/apache-2-0).
 
 ## Copyright Notice
 Copyright 2024, Regents of the University of Michigan.

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mlibrary/yabeda-hanami
-  revision: 04b724c5d93d66dd42cb4c9c38d48cbba9115a02
+  revision: 59b38d80e4483f66dc1616e91ebcd87bb3be57db
   branch: main
   specs:
     yabeda-hanami (0.1.0)
