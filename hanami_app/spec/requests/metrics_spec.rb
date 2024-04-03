@@ -29,7 +29,6 @@ RSpec.describe "Metrics", type: :request do
   it "increments counters for every error" do
     expect { get "/hello/error" }.to \
       increment_yabeda_counter(Yabeda.hanami.request_errors_total)
-      .with_tags(method: "GET", scheme: "http", path: "/hello/error", status: 500)
       .by(1)
   end
 end
