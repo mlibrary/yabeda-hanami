@@ -15,3 +15,6 @@ ruby_version: 2.6
 
 extend_config:
   - .my_frozen_string_literal_comment.yml
+
+ignore:
+  - yabeda-hanami.gemspec
