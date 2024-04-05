@@ -16,12 +16,10 @@ Built-in metrics for out of the box [Hanami](https://hanamirb.org/) applications
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. 
-
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG"
+gem "yabeda-hanami"
 # Then add monitoring system adapter, e.g.:
 # gem 'yabeda-prometheus'
 ```
