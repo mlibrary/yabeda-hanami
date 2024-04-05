@@ -5,11 +5,12 @@ Built-in metrics for out of the box [Hanami](https://hanamirb.org/) applications
 ## Metrics
 
 ### Rack
-| type      | name                         | subscription[^1]      | comment                           |
-|-----------|------------------------------|-----------------------|-----------------------------------|
-| counter   | :hanami_requests_total       | :"rack.request.start" | Total web requests received       |
-| histogram | :hanami_requests_duration    | :"rack.request.stop"  | Web request duration (in seconds) |
-| counter   | :hanami_request_errors_total | :"rack.request.error" | Total web request errors[^2]      |
+| type      | name                        | subscription[^1]      | comment                                                            |
+|-----------|-----------------------------|-----------------------|--------------------------------------------------------------------|
+| counter   | :hanami_requests_total      | :"rack.request.start" | Total web requests received (by method, path, remote_ip)           |
+| counter   | :hanami_responses_total     | :"rack.request.stop"  | Total web responses given (by method, path, remote_ip, status)     |
+| histogram | :hanami_processing_duration | :"rack.request.stop"  | Processing duration in seconds (by method, path, remote_ip, status) |
+| counter   | :hanami_errors_total        | :"rack.request.error" | Total rack errors (by method, path, remote_ip)[^2]                 |
 [^1]: `id` of [Dry::Monitor::Notifications](https://www.rubydoc.info/gems/dry-monitor/Dry/Monitor/Notifications) declared in [Dry::Monitor::Rack::Middleware](https://www.rubydoc.info/gems/dry-monitor/Dry/Monitor/Rack/Middleware)
 [^2]: I don't think this event is ever used! [dry-monitor (1.0.1)](https://www.rubydoc.info/gems/dry-monitor)
 

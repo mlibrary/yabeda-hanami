@@ -10,9 +10,9 @@ module Yabeda
         @labels ||= begin
           labels = {
             method: method,
-            scheme: scheme,
             path: path,
-            status: status
+            status: status,
+            remote_ip: remote_ip
           }
           labels.merge(payload.slice(*Yabeda.default_tags.keys - labels.keys))
         end
@@ -24,12 +24,12 @@ module Yabeda
 
       private
 
-      def method
-        payload[:env]["REQUEST_METHOD"]
+      def remote_ip
+        payload[:env]["REMOTE_ADDR"]
       end
 
-      def scheme
-        payload[:env]["rack.url_scheme"]
+      def method
+        payload[:env]["REQUEST_METHOD"]
       end
 
       def path

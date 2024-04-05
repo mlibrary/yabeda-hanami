@@ -16,19 +16,26 @@ RSpec.describe "Metrics", type: :request do
   it "increments counters for every request" do
     expect { get "/hello/world" }.to \
       increment_yabeda_counter(Yabeda.hanami.requests_total)
-      .with_tags(method: "GET", scheme: "http", path: "/hello/world", status: nil)
+      .with_tags(method: "GET", path: "/hello/world", remote_ip: "127.0.0.1", status: nil)
       .by(1)
   end
 
-  it "measures latency for every request" do
+  it "increments counters for every response" do
     expect { get "/hello/world" }.to \
-      measure_yabeda_histogram(Yabeda.hanami.request_duration)
+      increment_yabeda_counter(Yabeda.hanami.responses_total)
+      .with_tags(method: "GET", path: "/hello/world", remote_ip: "127.0.0.1", status: 200)
+      .by(1)
+  end
+
+  it "measures processing duration for every request-response" do
+    expect { get "/hello/world" }.to \
+      measure_yabeda_histogram(Yabeda.hanami.processing_duration)
       .with(be_between(0, Yabeda::Hanami::LONG_RUNNING_REQUEST_BUCKETS.last))
   end
 
-  it "increments counters for every error" do
+  it "increments counters for every rack error" do
     expect { get "/hello/error" }.to \
-      increment_yabeda_counter(Yabeda.hanami.request_errors_total)
+      increment_yabeda_counter(Yabeda.hanami.rack_errors_total)
       .by(1)
   end
 end

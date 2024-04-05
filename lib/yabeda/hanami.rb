@@ -21,16 +21,23 @@ module Yabeda
           _yabeda_hanami_config = ::Yabeda::Hanami.config
 
           group :hanami do
-            counter :requests_total, comment: "A counter of the total number of HTTP requests hanami processed.",
-              tags: %i[method scheme path status]
+            counter :requests_total,
+              comment: "A counter of the total number of HTTP requests hanami processed.",
+              tags: %i[method path remote_ip]
 
-            histogram :request_duration, tags: %i[method scheme path status],
+            counter :responses_total,
+              comment: "A counter of the total number of HTTP requests hanami processed.",
+              tags: %i[method path remote_ip status]
+
+            histogram :processing_duration,
               unit: :seconds,
               buckets: LONG_RUNNING_REQUEST_BUCKETS,
-              comment: "A histogram of the response latency."
+              comment: "A histogram of the processing duration.",
+              tags: %i[method path remote_ip status]
 
-            counter :request_errors_total, comment: "A counter of the total number of HTTP request errors.",
-              tags: %i[method scheme path status]
+            counter :rack_errors_total,
+              comment: "A counter of the total number of rack errors.",
+              tags: %i[method path remote_ip status]
           end
         end
       end
@@ -48,13 +55,14 @@ module Yabeda
         yabeda_hanami_config.notifications.subscribe(:"rack.request.stop") do |event|
           event = Yabeda::Hanami::Event.new(event.id, event.payload)
 
-          Yabeda.hanami_request_duration.measure(event.labels, event.duration)
+          Yabeda.hanami_responses_total.increment(event.labels)
+          Yabeda.hanami_processing_duration.measure(event.labels, event.duration)
         end
 
         yabeda_hanami_config.notifications.subscribe(:"rack.request.error") do |event|
           event = Yabeda::Hanami::Event.new(event.id, event.payload)
 
-          Yabeda.hanami_request_errors_total.increment(event.labels)
+          Yabeda.hanami_rack_errors_total.increment(event.labels)
         end
       end
 
