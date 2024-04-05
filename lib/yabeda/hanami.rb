@@ -23,7 +23,7 @@ module Yabeda
           group :hanami do
             counter :requests_total,
               comment: "A counter of the total number of HTTP requests hanami processed.",
-              tags: %i[method path remote_ip]
+              tags: %i[method path remote_ip status]
 
             counter :responses_total,
               comment: "A counter of the total number of HTTP requests hanami processed.",
