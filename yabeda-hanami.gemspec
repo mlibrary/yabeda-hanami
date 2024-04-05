@@ -1,37 +1,33 @@
-# -*- encoding: utf-8 -*-
-# stub: yabeda-hanami 0.1.0 ruby lib
+# frozen_string_literal: true
 
-Gem::Specification.new do |s|
-  s.name = "yabeda-hanami".freeze
-  s.version = "0.1.1"
+require_relative "lib/yabeda/hanami/version"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
-  s.metadata = { "changelog_uri" => "https://github.com/mlibrary/yabeda-hanami/blob/main/CHANGELOG.md", "homepage_uri" => "https://github.com/mlibrary/yabeda-hanami", "source_code_uri" => "https://github.com/mlibrary/yabeda-hanami" } if s.respond_to? :metadata=
-  s.require_paths = ["lib".freeze]
-  s.authors = ["Greg Kostin".freeze]
-  s.bindir = "exe".freeze
-  s.date = "2024-04-05"
-  s.description = "Easy collecting your Hanami apps metrics".freeze
-  s.email = ["gkostin@umich.edu".freeze]
-  s.files = ["lib/yabeda/hanami.rb".freeze,
-             "lib/yabeda/hanami/config.rb".freeze,
-             "lib/yabeda/hanami/event.rb".freeze,
-             "lib/yabeda/hanami/version.rb".freeze]
-  s.homepage = "https://github.com/mlibrary/yabeda-hanami".freeze
-  s.licenses = ["Apache-2.0".freeze]
-  s.required_ruby_version = Gem::Requirement.new(">= 2.6.0".freeze)
-  s.rubygems_version = "3.4.19".freeze
-  s.summary = "Extensible metrics for monitoring a Hanami application".freeze
+Gem::Specification.new do |spec|
+  spec.name = "yabeda-hanami"
+  spec.version = Yabeda::Hanami::VERSION
+  spec.authors = ["Greg Kostin"]
+  spec.email = ["gkostin@umich.edu"]
 
-  s.installed_by_version = "3.4.19" if s.respond_to? :installed_by_version
+  spec.summary = "Extensible metrics for monitoring a Hanami application"
+  spec.description = "Easy collecting your Hanami apps metrics"
+  spec.homepage = "https://github.com/mlibrary/yabeda-hanami"
+  spec.license = "Apache-2.0"
+  spec.required_ruby_version = ">= 2.6.0"
 
-  s.specification_version = 4
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/mlibrary/yabeda-hanami"
+  spec.metadata["changelog_uri"] = "https://github.com/mlibrary/yabeda-hanami/blob/main/CHANGELOG.md"
 
-  s.add_runtime_dependency(%q<hanami>.freeze, ["~> 2.1"])
-  s.add_runtime_dependency(%q<yabeda>.freeze, ["~> 0.12"])
-  s.add_development_dependency(%q<bundler>.freeze, ["~> 2.0"])
-  s.add_development_dependency(%q<debug>.freeze, ["~> 1.9"])
-  s.add_development_dependency(%q<rake>.freeze, ["~> 13.0"])
-  s.add_development_dependency(%q<rspec>.freeze, ["~> 3.0"])
-  s.add_development_dependency(%q<standard>.freeze, ["~> 1.3"])
+  spec.files = Dir.glob("lib/**/*")
+  spec.require_paths = ["lib"]
+  spec.extra_rdoc_files = ["CHANGELOG.md", "README.md", "LICENSE.txt"]
+
+  spec.add_dependency "hanami", "~> 2.1"
+  spec.add_dependency "yabeda", "~> 0.12"
+
+  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "debug", "~> 1.9"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "standard", "~> 1.3"
 end

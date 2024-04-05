@@ -1,5 +1,8 @@
+.bash_history
 /.bundle/
 /.cache/
+.DS_Store
+.idea/
 /.yardoc
 /_yardoc/
 /coverage/
