@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name = "yabeda-hanami".freeze
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.metadata = { "changelog_uri" => "https://github.com/mlibrary/yabeda-hanami/blob/main/CHANGELOG.md", "homepage_uri" => "https://github.com/mlibrary/yabeda-hanami", "source_code_uri" => "https://github.com/mlibrary/yabeda-hanami" } if s.respond_to? :metadata=

@@ -53,7 +53,7 @@ From here on it is the same as above a.k.a. run `bin/setup` to install dependenc
 
 ## Releasing
 
-1. Bump version number in `lib/yabeda/rails/version.rb` 
+1. Bump version number in `lib/yabeda/hanami/version.rb` 
 
    In case of pre-releases keep in mind [rubygems/rubygems#3086](https://github.com/rubygems/rubygems/issues/3086) and check version with command like `Gem::Version.new(Yabeda::Hanami::VERSION).to_s`
 

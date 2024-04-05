@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yabeda-hanami (0.1.0)
+    yabeda-hanami (0.1.1)
       hanami (~> 2.1)
       yabeda (~> 0.12)
 
@@ -141,6 +141,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
