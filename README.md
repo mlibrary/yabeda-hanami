@@ -2,6 +2,8 @@
 
 Built-in metrics for out of the box [Hanami](https://hanamirb.org/) applications monitoring.
 
+[![Gem Version](https://badge.fury.io/rb/yabeda-hanami.svg)](https://badge.fury.io/rb/yabeda-hanami)
+
 ## Metrics
 
 ### Rack
