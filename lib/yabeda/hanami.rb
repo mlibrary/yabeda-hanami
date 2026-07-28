@@ -22,11 +22,11 @@ module Yabeda
 
           group :hanami do
             counter :requests_total,
-              comment: "A counter of the total number of HTTP requests hanami processed.",
+              comment: "A counter of the total number of HTTP requests Hanami has processed.",
               tags: %i[method path remote_ip status]
 
             counter :responses_total,
-              comment: "A counter of the total number of HTTP requests hanami processed.",
+              comment: "A counter of the total number of HTTP responses Hanami has processed.",
               tags: %i[method path remote_ip status]
 
             histogram :processing_duration,
@@ -36,7 +36,7 @@ module Yabeda
               tags: %i[method path remote_ip status]
 
             counter :rack_errors_total,
-              comment: "A counter of the total number of rack errors.",
+              comment: "A counter of the total number of Rack errors.",
               tags: %i[method path remote_ip status]
           end
         end

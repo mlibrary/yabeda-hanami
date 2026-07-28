@@ -1,9 +1,9 @@
-FROM ruby:3.2.3
+FROM ruby:4.0.6
 
 ARG USERNAME=dcde
 ARG UID=1000
 ARG GID=1000
-ARG NODE_VERSION=20
+ARG NODE_VERSION=26
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get -y update && \

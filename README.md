@@ -12,9 +12,8 @@ Built-in metrics for out of the box [Hanami](https://hanamirb.org/) applications
 | counter   | :hanami_requests_total      | :"rack.request.start" | Total web requests received    |
 | counter   | :hanami_responses_total     | :"rack.request.stop"  | Total web responses given      |
 | histogram | :hanami_processing_duration | :"rack.request.stop"  | Processing duration in seconds |
-| counter   | :hanami_errors_total        | :"rack.request.error" | Total rack errors[^2]          |
+| counter   | :hanami_errors_total        | :"rack.request.error" | Total rack errors              |
 [^1]: `id` of [Dry::Monitor::Notifications](https://www.rubydoc.info/gems/dry-monitor/Dry/Monitor/Notifications) declared in [Dry::Monitor::Rack::Middleware](https://www.rubydoc.info/gems/dry-monitor/Dry/Monitor/Rack/Middleware)
-[^2]: I don't think this event is ever used! [dry-monitor (1.0.1)](https://www.rubydoc.info/gems/dry-monitor)
 
 ## Installation
 
@@ -22,14 +21,14 @@ Built-in metrics for out of the box [Hanami](https://hanamirb.org/) applications
 Add these lines to your application's Gemfile:
 
 ```ruby
-gem "yabeda-hanami", "~> 0.1"
+gem "yabeda-hanami", "~> 0.2"
 # Then add monitoring system adapter, e.g.:
 gem 'yabeda-prometheus'
 ```
 
 Alternatively, install from git:
 ```ruby
-gem "yabeda-hanami", "~> 0.1", git: "https://github.com/mlibrary/yabeda-hanami.git", tag: "v0.1.1"
+gem "yabeda-hanami", "~> 0.2", git: "https://github.com/mlibrary/yabeda-hanami.git", tag: "v0.2.0"
 # Then add monitoring system adapter, e.g.:
 gem 'yabeda-prometheus'
 ```
@@ -77,10 +76,10 @@ In the above example the route `http://127.0.0.1:2300/metrics` returns the appli
 
 ```shell
 # TYPE hanami_requests_total counter
-# HELP hanami_requests_total A counter of the total number of HTTP requests hanami processed.
+# HELP hanami_requests_total A counter of the total number of HTTP requests Hanami has processed.
 hanami_requests_total{method="GET",path="/",status="",remote_ip="172.24.0.1"} 2.0
 # TYPE hanami_responses_total counter
-# HELP hanami_responses_total A counter of the total number of HTTP requests hanami processed.
+# HELP hanami_responses_total A counter of the total number of HTTP responses Hanami has processed.
 hanami_responses_total{method="GET",path="/",status="200",remote_ip="172.24.0.1"} 2.0
 # TYPE hanami_processing_duration_seconds histogram
 # HELP hanami_processing_duration_seconds A histogram of the processing duration.
@@ -172,4 +171,4 @@ Everyone interacting in the Yabeda::Hanami project's codebases, issue trackers, 
 The gem is available as open source under the terms of the [Apache 2.0 License](https://opensource.org/license/apache-2-0).
 
 ## Copyright Notice
-Copyright 2024, Regents of the University of Michigan.
+Copyright 2026, Regents of the University of Michigan.
