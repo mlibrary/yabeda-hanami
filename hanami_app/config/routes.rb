@@ -2,9 +2,7 @@
 
 module HanamiApp
   class Routes < Hanami::Routes
-    # Add your routes here. See https://guides.hanamirb.org/routing/overview/ for details.
-    root to: "hello.world"
-
+    # Add your routes here. See https://hanakai.org/learn/hanami/routing/ for details.
     get "/hello/world", to: "hello.world"
     get "/hello/error", to: "hello.error"
   end
