@@ -47,6 +47,7 @@ GEM
       dry-inflector (~> 1.0)
     dry-transformer (1.0.1)
       zeitwerk (~> 2.6)
+    fiddle (1.1.8)
     hanami (3.0.1)
       bundler (>= 2.0)
       dry-configurable (~> 1.0, >= 1.2.0, < 2)
@@ -164,6 +165,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 4.0)
   debug (~> 1.11)
+  fiddle (~> 1.1)
   rake (~> 13.4)
   rspec (~> 3.13)
   standard (~> 1.56)

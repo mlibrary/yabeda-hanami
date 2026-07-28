@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 4.0"
   spec.add_development_dependency "debug", "~> 1.11"
   spec.add_development_dependency "rake", "~> 13.4"
+  spec.add_development_dependency "fiddle", "~> 1.1"
   spec.add_development_dependency "rspec", "~> 3.13"
   spec.add_development_dependency "standard", "~> 1.56"
 end
