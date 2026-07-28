@@ -1,8 +1,9 @@
 {
-  "name": "hanami_app",
+  "name": "generated",
   "private": true,
   "type": "module",
   "dependencies": {
-    "hanami-assets": "^2.1.0"
+    "esbuild": "^0.28.1",
+    "hanami-assets": "^3.0.0"
   }
 }

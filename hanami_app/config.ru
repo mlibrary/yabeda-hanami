@@ -3,6 +3,9 @@
 require "hanami/boot"
 require "yabeda/prometheus"
 
-use Yabeda::Prometheus::Exporter # , path: "/metrics"
+use Yabeda::Prometheus::Exporter
+
+Hanami.app.start :rack
+Hanami.app.start :instrument
 
 run Hanami.app

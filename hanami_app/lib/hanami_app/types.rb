@@ -3,7 +3,7 @@
 require "dry/types"
 
 module HanamiApp
-  Types = Dry.Types
+  Types = Dry.Types(default: :strict)
 
   module Types
     # Define your custom types here

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require "yabeda/hanami"
-
 module HanamiApp
   module Actions
     module Hello
